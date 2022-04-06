@@ -33,3 +33,5 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.Pisey-Nguon:Easy-Permission:1.0.0'
 	}
+
+Please take a look at MainActivity you will see how I implement it in the example of the project.

@@ -40,7 +40,7 @@ object EasyPermissionDialog {
         // handle something when permissions are not granted and the request method cannot be called
     }
 
-    fun quickPermissionsOption(context: Context?) = EasyPermissionsOptions(
+    fun easyPermissionsOption(context: Context?) = EasyPermissionsOptions(
         handleRationale = true,
         rationaleMessage = "Custom rational message",
         permanentlyDeniedMessage = "Custom permanently denied message",

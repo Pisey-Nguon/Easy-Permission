@@ -24,7 +24,7 @@ fun Context?.runWithPermissions(
     vararg permissions: String,
     callback: () -> Unit
 ): Any? {
-    return runWithPermissionsHandler(this, permissions, callback, EasyPermissionDialog.quickPermissionsOption(this))
+    return runWithPermissionsHandler(this, permissions, callback, EasyPermissionDialog.easyPermissionsOption(this))
 }
 
 /**
@@ -47,7 +47,7 @@ fun Fragment?.runWithPermissions(
     vararg permissions: String,
     callback: () -> Unit,
 ): Any? {
-    return runWithPermissionsHandler(this, permissions, callback,EasyPermissionDialog.quickPermissionsOption(this?.requireContext()))
+    return runWithPermissionsHandler(this, permissions, callback,EasyPermissionDialog.easyPermissionsOption(this?.requireContext()))
 }
 
 /**

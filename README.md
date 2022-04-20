@@ -1,3 +1,4 @@
+
 # Easy-Permission
 [![](https://jitpack.io/v/Pisey-Nguon/Easy-Permission.svg)](https://jitpack.io/#Pisey-Nguon/Easy-Permission)
 
@@ -34,4 +35,14 @@ Step 2. Add the dependency
 	        implementation 'com.github.Pisey-Nguon:Easy-Permission:1.0.0'
 	}
 
-Please take a look at MainActivity you will see how I implement it in the example of the project.
+Step 3. Please make sure you add any permission that need to manifest, Example:
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+Step 4. Finally you can request permission by
+
+    runWithPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CAMERA,){  
+      //After the user allow permission it will execute your function here  
+    }

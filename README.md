@@ -44,5 +44,5 @@ Step 3. Please make sure you add any permission that need to manifest, Example:
 Step 4. Finally you can request permission by
 
     runWithPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CAMERA,){  
-      //After the user allow permission it will execute your function here  
+      Toast.makeText(this, "Permission Allowed", Toast.LENGTH_SHORT).show()  
     }

@@ -2,6 +2,9 @@
 # Easy-Permission
 [![](https://jitpack.io/v/Pisey-Nguon/Easy-Permission.svg)](https://jitpack.io/#Pisey-Nguon/Easy-Permission)
 
+![20220420_144106](https://user-images.githubusercontent.com/47247206/164179342-0251c037-ce07-44ca-80bb-41b04706d361.gif)
+
+
 How to
 To get a Git project into your build:
 

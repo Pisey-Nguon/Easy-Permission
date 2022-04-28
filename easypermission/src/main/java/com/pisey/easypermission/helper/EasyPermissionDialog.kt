@@ -1,22 +1,27 @@
 package com.pisey.easypermission.helper
 
 import android.content.Context
+import androidx.appcompat.app.AlertDialog
 import com.pisey.easypermission.getListOfShortNamePermission
-import org.jetbrains.anko.alert
 
 object EasyPermissionDialog {
     private fun rationaleCallback(context: Context?,req: EasyPermissionsRequest) {
         // this will be called when permission is denied once or more time. Handle it your way
         val myMessage = "These permissions are required to perform this feature. Please allow us to use this feature. "
-        context?.alert{
-            message = myMessage
-            positiveButton("TRY AGAIN") {
-                req.proceed()
-            }
-            negativeButton("CANCEL") {
-                req.cancel()
-            }
-        }?.apply { isCancelable = false }?.show()
+        context?.let{
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage(myMessage)
+                .setPositiveButton("TRY AGAIN"
+                ) { _, _ ->
+                    req.proceed()
+                }
+                .setNegativeButton("CANCEL"
+                ) { _, _ ->
+                    req.cancel()
+                }
+                .setCancelable(false)
+            builder.create().show()
+        }
     }
 
 
@@ -25,15 +30,20 @@ object EasyPermissionDialog {
         // denied. Handle it your way.
         val permissions = getListOfShortNamePermission(req.deniedPermissions)
         val myMessage =  "Some permissions are permanently denied which are required to perform this operation. Please open app settings to grant these permissions: ${permissions.joinToString(", ")}"
-        context?.alert{
-            message = myMessage
-            positiveButton("SETTINGS") {
-                req.openAppSettings()
-            }
-            negativeButton("CANCEL") {
-                req.cancel()
-            }
-        }?.apply { isCancelable = false }?.show()
+        context?.let{
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage(myMessage)
+                .setPositiveButton("SETTINGS"
+                ) { _, _ ->
+                    req.openAppSettings()
+                }
+                .setNegativeButton("CANCEL"
+                ) { _, _ ->
+                    req.cancel()
+                }
+                .setCancelable(false)
+            builder.create().show()
+        }
     }
 
     private fun whenPermAreDenied(context: Context?,req: EasyPermissionsRequest) {

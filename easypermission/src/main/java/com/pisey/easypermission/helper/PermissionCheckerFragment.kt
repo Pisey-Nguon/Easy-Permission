@@ -7,9 +7,9 @@ import android.net.Uri.fromParts
 import android.os.Bundle
 import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import org.jetbrains.anko.alert
 
 /**
  * This fragment holds the single permission request and holds it until the flow is completed
@@ -150,15 +150,21 @@ class PermissionCheckerFragment : Fragment() {
                     return
                 }
 
-                activity?.alert {
-                    message = easyPermissionsRequest?.permanentlyDeniedMessage.orEmpty()
-                    positiveButton("SETTINGS") {
-                        openAppSettings()
-                    }
-                    negativeButton("CANCEL") {
-                        clean()
-                    }
-                }?.apply { isCancelable = false }?.show()
+
+                activity?.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.setMessage(easyPermissionsRequest?.permanentlyDeniedMessage.orEmpty())
+                        .setPositiveButton("SETTINGS"
+                        ) { _, _ ->
+                            openAppSettings()
+                        }
+                        .setNegativeButton("CANCEL"
+                        ) { _, _ ->
+                            clean()
+                        }
+                        .setCancelable(false)
+                    builder.create().show()
+                }
                 return
             }
 
@@ -170,15 +176,20 @@ class PermissionCheckerFragment : Fragment() {
                     return
                 }
 
-                activity?.alert {
-                    message = easyPermissionsRequest?.rationaleMessage.orEmpty()
-                    positiveButton("TRY AGAIN") {
-                        requestPermissionsFromUser()
-                    }
-                    negativeButton("CANCEL") {
-                        clean()
-                    }
-                }?.apply { isCancelable = false }?.show()
+                activity?.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.setMessage(easyPermissionsRequest?.rationaleMessage.orEmpty())
+                        .setPositiveButton("TRY AGAIN"
+                        ) { _, _ ->
+                            requestPermissionsFromUser()
+                        }
+                        .setNegativeButton("CANCEL"
+                        ) { _, _ ->
+                            clean()
+                        }
+                        .setCancelable(false)
+                    builder.create().show()
+                }
                 return
             }
 

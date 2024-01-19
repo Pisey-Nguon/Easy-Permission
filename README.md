@@ -34,9 +34,7 @@ Add it in your root settings.gradle at the end of repositories:
 
 Step 2. Add the dependency
 
-	dependencies {
-	        implementation 'com.github.Pisey-Nguon:Easy-Permission:1.0.1'
-	}
+	implementation 'com.github.Pisey-Nguon:Easy-Permission:1.0.2'
 
 Step 3. Please make sure you add any permission that need to manifest, Example:
 
